@@ -1,9 +1,15 @@
 import { getAllPages, getMainPage } from "@/lib/helper/contentConverter";
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 
 // Components
 import MainBlog from "@/components/elements/blog/main-blog";
 import CTA7 from "@/components/elements/cta/cta7";
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "Fledger Blog | Finance Insights for UK Startups & Small Businesses",
@@ -27,9 +33,6 @@ export default function Page() {
     <main>
       <div className="container mt-[100px]">
         <MainBlog blog={blog} blogs={blogs} />
-      </div>
-
-      <div className='my-[70px]'>
         <CTA7 cta={cta} />
       </div>
     </main>

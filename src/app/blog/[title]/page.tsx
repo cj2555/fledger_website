@@ -1,6 +1,6 @@
 import { getAllPages, getMainPage } from "@/lib/helper/contentConverter";
 import { notFound } from "next/navigation";
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 
 // Components
 import BlogDetails from "@/components/elements/blog/blog-details";
@@ -12,6 +12,12 @@ type Props = {
   params: {
     title: string;
   };
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 // Generate static params for all blog posts at build time

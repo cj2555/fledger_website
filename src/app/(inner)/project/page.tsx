@@ -1,8 +1,14 @@
 import { getMainPage } from "@/lib/helper/contentConverter";
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 
 // Components
 import AllProject from "@/components/elements/project/all-project";
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const project = getMainPage("/projects/booking-project.mdx");
