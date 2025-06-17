@@ -1,11 +1,27 @@
 import { getAllPages, getMainPage } from "@/lib/helper/contentConverter";
+import { Metadata } from 'next';
 
 // Components
-import SeoData from "@/components/tools/seo-data";
 import CTA3 from "@/components/elements/cta/cta3";
 import FAQ1 from "@/components/elements/faq/faq1";
 import IntegrationHero from "@/components/elements/integration/integration-hero";
 import MainIntegration from "@/components/elements/integration/main-integration";
+
+export const metadata: Metadata = {
+  title: "Fledger Integrations | Connect Your Business Tools",
+  description: "Seamlessly integrate Fledger with your favorite business tools. Connect bank feeds, payment gateways, and more to streamline your accounting workflow.",
+  openGraph: {
+    title: "Fledger Integrations | Connect Your Business Tools",
+    description: "Seamlessly integrate Fledger with your favorite business tools. Connect bank feeds, payment gateways, and more to streamline your accounting workflow.",
+    url: "https://www.fledger.co.uk/integration",
+    siteName: "Fledger",
+    locale: "en_GB",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://www.fledger.co.uk/integration"
+  }
+};
 
 export default function Page() {
   const hero = getMainPage("/integrations/hero-integration.mdx");
@@ -14,15 +30,8 @@ export default function Page() {
   const faq = getMainPage("/faqs/faq1.mdx");
   const cta = getMainPage("/ctas/cta3.mdx");
 
-  const { meta_title, meta_description } = hero.data.meta || {};
-
   return (
     <main>
-      <SeoData
-        title={hero.data.title || "Integration page"}
-        meta_title={meta_title || "Integration page"}
-        description={meta_description || "Integration page description"}
-      />
       <IntegrationHero hero={hero} />
       <MainIntegration integration={integration} integrations={integrations} />
       <FAQ1 faq={faq} />

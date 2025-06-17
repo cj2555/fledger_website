@@ -1,6 +1,5 @@
 import { getAllPages, getMainPage } from "@/lib/helper/contentConverter";
 import { Metadata } from 'next';
-import { SEO } from "@/components/common/SEO";
 
 // Components
 import CustomerServiceBlog from "@/components/elements/blog/customer-service-blog";
@@ -24,7 +23,6 @@ import CTA7 from "@/components/elements/cta/cta7";
 export const metadata: Metadata = {
   title: "Fledger | Online Accounting Software for UK Small Businesses",
   description: "Fledger simplifies accounting for UK small businesses & freelancers with cloud-based invoicing, VAT, payroll & bank feeds. Get started with easy, smart tools.",
-  metadataBase: new URL('https://www.fledger.co.uk'),
   openGraph: {
     title: "Fledger | Online Accounting Software for UK Small Businesses",
     description: "Fledger simplifies accounting for UK small businesses & freelancers with cloud-based invoicing, VAT, payroll & bank feeds. Get started with easy, smart tools.",
@@ -33,25 +31,9 @@ export const metadata: Metadata = {
     locale: "en_GB",
     type: "website",
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: "Fledger | Online Accounting Software for UK Small Businesses",
-    description: "Fledger simplifies accounting for UK small businesses & freelancers with cloud-based invoicing, VAT, payroll & bank feeds. Get started with easy, smart tools.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
   alternates: {
-    canonical: "https://www.fledger.co.uk",
-  },
+    canonical: "https://www.fledger.co.uk"
+  }
 };
 
 export default function Page() {
@@ -73,12 +55,6 @@ export default function Page() {
 
   return (
     <main>
-      <SEO 
-        path="/"
-        title="Fledger | Online Accounting Software for UK Small Businesses"
-        description="Fledger simplifies accounting for UK small businesses & freelancers with cloud-based invoicing, VAT, payroll & bank feeds. Get started with easy, smart tools."
-        isProduct={true}
-      />
       <CustomerServiceHero hero={hero} />
       <StartupFeature2 feature={feature2} />
       <SEOService service={service} services={services} />

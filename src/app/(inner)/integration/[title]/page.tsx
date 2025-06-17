@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { getAllPages, getMainPage } from "@/lib/helper/contentConverter";
+import { Metadata } from 'next';
 
 // Components
-import SeoData from "@/components/tools/seo-data";
 import FAQ1 from "@/components/elements/faq/faq1";
 import IntegrationDetails from "@/components/elements/integration/integration-details";
 import MainIntegration from "@/components/elements/integration/main-integration";
@@ -15,51 +15,58 @@ type Props = {
   };
 };
 
-export const generateStaticParams = () => {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const integrations = getAllPages("/integrations/main");
-  const paths = integrations.map((program) => ({
-    title: program.slug,
-  }));
+  const integration = integrations.find((item) => item.slug === params.title);
+  
+  if (!integration) {
+    return {
+      title: "Integration Not Found | Fledger",
+      description: "The requested integration could not be found.",
+    };
+  }
 
-  return paths;
-};
+  return {
+    title: `${integration.data.title} Integration | Fledger`,
+    description: integration.data.meta?.meta_description || `Learn how to integrate ${integration.data.title} with Fledger to streamline your accounting workflow.`,
+    openGraph: {
+      title: `${integration.data.title} Integration | Fledger`,
+      description: integration.data.meta?.meta_description || `Learn how to integrate ${integration.data.title} with Fledger to streamline your accounting workflow.`,
+      url: `https://www.fledger.co.uk/integration/${params.title}`,
+      siteName: "Fledger",
+      locale: "en_GB",
+      type: "article",
+    },
+    alternates: {
+      canonical: `https://www.fledger.co.uk/integration/${params.title}`
+    }
+  };
+}
 
 export default function Page({ params }: Props) {
   const integrations = getAllPages("/integrations/main");
-  const integrationContent = getMainPage("/integrations/main/_index.mdx");
-  const faq = getMainPage("/faqs/faq1.mdx");
 
   if (!(integrations && integrations.length)) {
     notFound();
   }
-  const integration = integrations.find((item) => item.slug === params.title);
-  const related = integrations
-    .filter((item) => item.slug !== params.title)
-    .slice(0, 5);
 
-  if (!(integration && integration.data)) {
+  const integration = integrations.find((item) => item.slug === params.title);
+  if (!integration) {
     notFound();
   }
 
-  const { meta_title, meta_description } = integration.data.meta || {};
+  const faq = getMainPage("/faqs/faq1.mdx");
 
   return (
     <main>
-      <SeoData
-        title={integration.data.title || "Integration page"}
-        meta_title={meta_title || "Integration page"}
-        description={meta_description || "Integration page description"}
-      />
       <IntegrationDetails integration={integration}>
-        <div className="mt-[29px]">
+        <div className="integration_details">
           <MDXContent content={integration.content} />
         </div>
       </IntegrationDetails>
       <MainIntegration
-        integration={integrationContent}
-        integrations={related}
-        detailsPage
-        btnText="Add Integration"
+        integration={getMainPage("/integrations/main/_index.mdx")}
+        integrations={integrations}
       />
       <FAQ1 faq={faq} />
       <NewsLetter1 />
