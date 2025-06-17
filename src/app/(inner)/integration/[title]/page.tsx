@@ -15,6 +15,13 @@ type Props = {
   };
 };
 
+export async function generateStaticParams() {
+  const integrations = getAllPages("/integrations/main");
+  return integrations.map((integration) => ({
+    title: integration.slug,
+  }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const integrations = getAllPages("/integrations/main");
   const integration = integrations.find((item) => item.slug === params.title);

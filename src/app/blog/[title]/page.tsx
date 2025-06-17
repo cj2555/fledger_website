@@ -13,6 +13,13 @@ type Props = {
   };
 };
 
+export async function generateStaticParams() {
+  const blogs = getAllPages("/blogs/main");
+  return blogs.map((blog) => ({
+    title: blog.slug,
+  }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blogs = getAllPages("/blogs/main");
   const blog = blogs.find((item) => item.slug === params.title);

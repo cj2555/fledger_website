@@ -1,6 +1,3 @@
-import SEOCounter from '@/components/elements/counter/seo-counter';
-import SEOFeature from '@/components/elements/feature/seo-feature';
-import SeoData from '@/components/tools/seo-data';
 import React from 'react';
 import { getMainPage } from '@/lib/helper/contentConverter';
 import CTA7 from '@/components/elements/cta/cta7';
@@ -19,26 +16,23 @@ export const metadata: Metadata = {
     locale: "en_GB",
     type: "website",
   },
+  alternates: {
+    canonical: "https://www.fledger.co.uk/privacy"
+  }
 };
 
 export default function TextPage() {
-  const feature = getMainPage("/features/seo-feature.mdx");
-  const counter = getMainPage("/counters/seo-counter.mdx");
   const cta = getMainPage("/ctas/cta7.mdx");
-  const pricing = getMainPage("/pricings/meeting-pricing.mdx");
-  const faq = getMainPage("/faqs/faq1.mdx");
 
   return (
     <main className='container mt-20'>
-      <SeoData />
-
       <div className='container'>
         <div className="min-h-screen bg-white py-16">
           <div className="max-w-7xl mx-auto px-4">
 
             <div id="privacy-header" className="text-center my-20">
               <h1 className="text-4xl font-semibold text-[#242626] mb-4">Privacy Policy</h1>
-              <p className="text-[#727979] text-lg">Our Personal statement, cookies, third-parties. Thank you for using Fledger! Our privacy policy details how we handle your info. By using Fledger, you agree to these practices.</p>
+              <p className="text-[#727979] text-lg">At Fledger, we take your privacy seriously. This policy outlines how we collect, use, and protect your data.</p>
             </div>
 
             {/* Introduction Section */}
@@ -121,7 +115,11 @@ export default function TextPage() {
                   <p>Depending on your location, you may have the following rights regarding your personal information:</p>
                   <ul className="space-y-4">
                     <li style={{ lineHeight: '1.5' }}>The right to access - You have the right to request copies of your personal data.</li>
-                    <li style={{ lineHeight: '1.5' }}>The right to rectification - You have the right to request that we correct any information you believe is inaccurate or complete information you believe</li>
+                    <li style={{ lineHeight: '1.5' }}>The right to rectification - You have the right to request that we correct any information you believe is inaccurate or complete information you believe is incomplete.</li>
+                    <li style={{ lineHeight: '1.5' }}>The right to erasure - You have the right to request that we erase your personal data, under certain conditions.</li>
+                    <li style={{ lineHeight: '1.5' }}>The right to restrict processing - You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
+                    <li style={{ lineHeight: '1.5' }}>The right to object to processing - You have the right to object to our processing of your personal data, under certain conditions.</li>
+                    <li style={{ lineHeight: '1.5' }}>The right to data portability - You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</li>
                   </ul>
                 </div>
               </div>
@@ -135,5 +133,5 @@ export default function TextPage() {
       </div>
     </main>
   );
-};
+}
 
