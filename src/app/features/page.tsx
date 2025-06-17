@@ -4,6 +4,21 @@ import SeoData from '@/components/tools/seo-data';
 import React from 'react';
 import { getMainPage } from '@/lib/helper/contentConverter';
 import CTA7 from '@/components/elements/cta/cta7';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Fledger Features | Cloud Accounting Tools for Small Businesses",
+  description: "Discover Fledger's powerful features—bank feeds, invoicing, VAT, payroll, inventory & more. Designed to simplify accounting for UK small businesses and freelancers.",
+  openGraph: {
+    title: "Fledger Features | Cloud Accounting Tools for Small Businesses",
+    description: "Discover Fledger's powerful features—bank feeds, invoicing, VAT, payroll, inventory & more. Designed to simplify accounting for UK small businesses and freelancers.",
+    url: "https://www.fledger.co.uk/features",
+    siteName: "Fledger",
+    locale: "en_GB",
+    type: "website",
+  },
+};
+
 export default function TextPage() {
     const feature = getMainPage("/features/seo-feature.mdx");
     const counter = getMainPage("/counters/seo-counter.mdx");

@@ -1,7 +1,8 @@
 import { getAllPages, getMainPage } from "@/lib/helper/contentConverter";
+import { Metadata } from 'next';
+import { SEO } from "@/components/common/SEO";
 
 // Components
-import SeoData from "@/components/tools/seo-data";
 import CustomerServiceBlog from "@/components/elements/blog/customer-service-blog";
 import Brand1 from "@/components/elements/brand/brand1";
 import CustomerServiceCounter from "@/components/elements/counter/customer-service-counter";
@@ -20,36 +21,64 @@ import VideoEditorPricing from "@/components/elements/pricing/video-editor-prici
 import StartupFAQ from "@/components/elements/faq/startup-faq";
 import CTA7 from "@/components/elements/cta/cta7";
 
+export const metadata: Metadata = {
+  title: "Fledger | Online Accounting Software for UK Small Businesses",
+  description: "Fledger simplifies accounting for UK small businesses & freelancers with cloud-based invoicing, VAT, payroll & bank feeds. Get started with easy, smart tools.",
+  metadataBase: new URL('https://www.fledger.co.uk'),
+  openGraph: {
+    title: "Fledger | Online Accounting Software for UK Small Businesses",
+    description: "Fledger simplifies accounting for UK small businesses & freelancers with cloud-based invoicing, VAT, payroll & bank feeds. Get started with easy, smart tools.",
+    url: "https://www.fledger.co.uk",
+    siteName: "Fledger",
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Fledger | Online Accounting Software for UK Small Businesses",
+    description: "Fledger simplifies accounting for UK small businesses & freelancers with cloud-based invoicing, VAT, payroll & bank feeds. Get started with easy, smart tools.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: "https://www.fledger.co.uk",
+  },
+};
+
 export default function Page() {
   const hero = getMainPage("/heros/customer-service-hero.mdx");
   const brand = getMainPage("/brands/brand1.mdx");
   const feature = getMainPage("/features/customer-service-feature.mdx");
-  // const service = getMainPage("/services/customer-service/_index.mdx");
-  // const services = getAllPages("/services/customer-service");
   const service = getMainPage("/services/seo/_index.mdx");
   const services = getAllPages("/services/seo");
   const counter = getMainPage("/counters/customer-service-counter.mdx");
-  // const feature2 = getMainPage("/features/customer-service-feature2.mdx");
   const feature2 = getMainPage("/features/startup-feature2.mdx");
-
-  const testimonial = getMainPage(
-    "/testimonials/customer-service-testimonial.mdx"
-  );
+  const testimonial = getMainPage("/testimonials/customer-service-testimonial.mdx");
   const rating = getMainPage("/ratings/customer-service-rating.mdx");
   const faq = getMainPage("/faqs/faq1.mdx");
-  // const faq = getMainPage("/faqs/customer-service-faq.mdx");
-  // const pricing = getMainPage("/pricings/customer-service-pricing.mdx");
   const pricing = getMainPage("/pricings/video-editor-pricing.mdx");
   const cta = getMainPage("/ctas/cta7.mdx");
-
-  const integration = getMainPage(
-    "/integrations/customer-service-integration.mdx"
-  );
+  const integration = getMainPage("/integrations/customer-service-integration.mdx");
   const blog = getMainPage("/blogs/main/_index.mdx");
   const blogs = getAllPages("/blogs/main");
+
   return (
     <main>
-      <SeoData />
+      <SEO 
+        path="/"
+        title="Fledger | Online Accounting Software for UK Small Businesses"
+        description="Fledger simplifies accounting for UK small businesses & freelancers with cloud-based invoicing, VAT, payroll & bank feeds. Get started with easy, smart tools."
+        isProduct={true}
+      />
       <CustomerServiceHero hero={hero} />
       <StartupFeature2 feature={feature2} />
       <SEOService service={service} services={services} />

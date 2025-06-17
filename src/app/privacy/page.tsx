@@ -6,6 +6,21 @@ import { getMainPage } from '@/lib/helper/contentConverter';
 import CTA7 from '@/components/elements/cta/cta7';
 import MeetingPricing from '@/components/elements/pricing/meeting-pricing';
 import StartupFAQ from '@/components/elements/faq/startup-faq';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Fledger Privacy Policy | Your Data Security Matters",
+  description: "Read how Fledger protects your privacy and data while delivering secure, reliable cloud accounting software for UK businesses.",
+  openGraph: {
+    title: "Fledger Privacy Policy | Your Data Security Matters",
+    description: "Read how Fledger protects your privacy and data while delivering secure, reliable cloud accounting software for UK businesses.",
+    url: "https://www.fledger.co.uk/privacy",
+    siteName: "Fledger",
+    locale: "en_GB",
+    type: "website",
+  },
+};
+
 export default function TextPage() {
   const feature = getMainPage("/features/seo-feature.mdx");
   const counter = getMainPage("/counters/seo-counter.mdx");
@@ -116,8 +131,8 @@ export default function TextPage() {
       </div>
 
       <div className='container py-10'>
-            <CTA7 cta={cta} />
-           </div>
+        <CTA7 cta={cta} />
+      </div>
     </main>
   );
 };

@@ -1,10 +1,40 @@
 import { AppContextProvider } from "@/context/app.context";
 import { CookieContextProvider } from "@/context/cookie.context";
 import CookieConsent from "@/components/ui/CookieConsent";
+import { Metadata } from 'next';
 
 // styles
 import "@/style/globals.css";
 import "@/style/main.scss";
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.fledger.co.uk'),
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  formatDetection: {
+    telephone: false,
+    date: false,
+    email: false,
+    address: false,
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your Google verification code
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function RootLayout({
   children,
@@ -13,16 +43,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5"
-        />
-        <meta
-          name="format-detection"
-          content="telephone=no, date=no, email=no, address=no"
-        />
-      </head>
       <body suppressHydrationWarning={true} dir="ltr">
         <CookieContextProvider>
           <AppContextProvider>

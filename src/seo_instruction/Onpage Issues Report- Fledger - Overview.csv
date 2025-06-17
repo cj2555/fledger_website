@@ -1,0 +1,36 @@
+ON Page Status Report,,,,
+,,,,
+,,,,
+https://fledger.co.uk ,,,,
+,,,,
+,,,,
+Sno,Task,Status,Remarks,Verified Page or Code
+1,Keyword Research,Done,,Approvel Pending.
+2,Title & Description tag,Done,,Pending
+3,Duplicate Content Check,Checked,Not Found,dulicate content not Found.
+4,Google Analytic Setup (If not setup),Checked,Not Found,Google analytic account is not available on website.
+5,SSL Certtification Recommendation,Checked,Good,SSL Certtification is implement on your site.
+6,Check Custom 404 Page,Checked,,404 page is available on your sites.
+7,Google Webmaster tools setup and Verification,Checked,Found,Not available.
+8,Check No-index & Index Tag,Checked,Not Found,Not available.
+9,Robots.Txt Creation/Analysis,Checked,Not Found, Not Present
+10,H1 Tag Correction,Checked,Found,No H1 is Persent But need to optimise.
+11,XML Sitemap,Checked,Not Found, Not Present.
+12,Image Alt Tag Analysis / Updation,Checked,Missing,image alt text are missing.
+13,Internal linking,Checked,Missing,No internal linking is available on blog pages & website.
+14,Canonical Tag Impletmention (If Applicable),Checked,Not Found,Canonical Tag is not availabe on your website.
+15,Check URL Canonicalization,Checked,Found,"Yes, both https://www.fledger.co.uk/  and https://fledger.co.uk/   redirect to same page."
+17,URL Structure/Mapping Analysis,Checked,Good,URL Structure/Mapping Analysis is good.
+18,Check SEO Friendly URL's,Checked,Good,"Yes , Your website Url is Seo friendly."
+19,Social Media Buttons Integration,Checked,Not Found,Social Media Buttons not available on your website.
+20,Favicon,Checked,Found,Present on website
+21,Broken Links Optimization,Checked,,Your website has 0 broken links.
+22,Header Optimization (If Applicable),Checked,Good,available |  But need to optimise.
+23,Footer Optimization (If Applicable),Checked,Good,available |  But need to optimise.
+24,Mobile Friendly Test,Checked,Good,Good! But needs to be optimized!
+25,Call To Action Report,Not Found,,In your website not availble CTA buttons.
+26,Blog Page Recommendation,Found,,Blog page is available.
+27,Current DA status,Checked,Not Good,Your website has 6 Domain Authority.
+28,Current Spam Score,Checked,Not Good,"Good, your website has only 17% spam score."
+29,Website loading performance,Checked,Good,"Mobile speed ""66"" and desktop speed ""89""."
+30,Schema Implementation for website,Checked,Not Found,schema not present on website.

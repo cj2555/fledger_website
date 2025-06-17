@@ -7,6 +7,21 @@ import CTA7 from '@/components/elements/cta/cta7';
 import MeetingPricing from '@/components/elements/pricing/meeting-pricing';
 import StartupFAQ from '@/components/elements/faq/startup-faq';
 import MobileAppFAQ from '@/components/elements/faq/mobile-app-faq';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Fledger Support FAQ | Help with Accounting & Invoicing",
+  description: "Find answers to common questions about Fledger's UK accounting software, features, pricing, VAT support, and more.",
+  openGraph: {
+    title: "Fledger Support FAQ | Help with Accounting & Invoicing",
+    description: "Find answers to common questions about Fledger's UK accounting software, features, pricing, VAT support, and more.",
+    url: "https://www.fledger.co.uk/faq",
+    siteName: "Fledger",
+    locale: "en_GB",
+    type: "website",
+  },
+};
+
 export default function TextPage() {
   const feature = getMainPage("/features/seo-feature.mdx");
   const counter = getMainPage("/counters/seo-counter.mdx");

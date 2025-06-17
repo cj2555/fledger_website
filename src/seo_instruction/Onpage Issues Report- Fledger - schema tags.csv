@@ -1,0 +1,84 @@
+,
+,
+PRODUCT,
+https://fledger.co.uk/features/,"<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org/"",
+  ""@type"": ""Product"",
+  ""name"": ""Fledger"",
+  ""image"": ""https://fledger.co.uk/assets/imgs/logo/fledgerLogo.svg"",
+  ""description"": ""Fledger is a feature-rich platform offering advanced business solutions."",
+  ""brand"": {
+    ""@type"": ""Brand"",
+    ""name"": ""Fledger""
+  },
+  ""url"": ""https://fledger.co.uk/features/"",
+  ""offers"": {
+    ""@type"": ""Offer"",
+    ""url"": ""https://fledger.co.uk/features/"",
+    ""priceCurrency"": ""GBP"",
+    ""price"": ""0.00"",
+    ""availability"": ""https://schema.org/InStock"",
+    ""seller"": {
+      ""@type"": ""Organization"",
+      ""name"": ""Fledger"",
+      ""telephone"": ""+44-20-3432-6423"",
+      ""email"": ""info@fledger.co.uk"",
+      ""address"": {
+        ""@type"": ""PostalAddress"",
+        ""streetAddress"": ""34-35 Hatton Garden, Holborn"",
+        ""addressLocality"": ""London"",
+        ""addressCountry"": ""United Kingdom"",
+        ""postalCode"": ""EC1N 8DX""
+      }
+    }
+  }
+}
+</script>
+"
+WQEBSITE,
+https://fledger.co.uk/home/,"<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""Corporation"",
+  ""name"": ""Fledger"",
+  ""url"": ""https://fledger.co.uk/home/"",
+  ""logo"": ""https://fledger.co.uk/assets/imgs/logo/fledgerLogo.svg"",
+  ""contactPoint"": [
+    {
+      ""@type"": ""ContactPoint"",
+      ""telephone"": ""+44-20-3432-6423"",
+      ""contactType"": ""Customer Service"",
+      ""areaServed"": ""GB"",
+      ""availableLanguage"": [""English""]
+    }
+  ],
+  ""address"": {
+    ""@type"": ""PostalAddress"",
+    ""streetAddress"": ""34-35 Hatton Garden, Holborn"",
+    ""addressLocality"": ""London"",
+    ""addressCountry"": ""United Kingdom"",
+    ""postalCode"": ""EC1N 8DX""
+  },
+  ""sameAs"": [],
+  ""hasWebsite"": {
+    ""@type"": ""WebSite"",
+    ""url"": ""https://fledger.co.uk/home/"",
+    ""name"": ""Fledger"",
+    ""potentialAction"": {
+      ""@type"": ""SearchAction"",
+      ""target"": ""https://fledger.co.uk/home/?s={search_term_string}"",
+      ""query-input"": ""required name=search_term_string""
+    }
+  }
+}
+</script>"
+Important Notes:,"In potentialAction search URL, you should add the actual search URL of your website.
+If your website does not have a search functionality, you can also remove this.
+
+In sameAs, if you have social media links, you can add them here. 
+Example:
+""sameAs"": [
+  ""https://facebook.com/fledger"",
+  ""https://linkedin.com/company/fledger""
+]"
