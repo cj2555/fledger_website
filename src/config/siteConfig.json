@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "meta_author": "Fledger",
+    "meta_image": "",
+    "meta_description": "Fledger is a cloud-based accounting software that helps you manage your finances, track your income and expenses, and get insights into your business. It's easy to use and integrates with your bank accounts and other financial tools."
+  },
+
+  "site_info": {
+    "title": "Fledger",
+    "description": "Fledger is a cloud-based accounting software that helps you manage your finances, track your income and expenses, and get insights into your business. It's easy to use and integrates with your bank accounts and other financial tools.",
+    "base_url": "",
+    "logo": "/assets/imgs/logo/logo.png",
+    "logo_light": "/assets/imgs/logo/fledgerLogo.svg",
+    "logo_icon": "/assets/imgs/logo/fledgerLogo.svg",
+    "logo_width": 115,
+    "logo_height": 32,
+    "logo_text": "Fledger"
+  },
+
+  "footer_info": {
+    "address": {
+      "name": "34-35 Hatton Garden, Holborn, London, United Kingdom, EC1N 8DX",
+      "link": "https://maps.app.goo.gl/b4d5XypGm5wE3xXE9",
+      "iframe_src": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.759454885086!2d-0.10996658422923324!3d51.5202004796372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b50da878063%3A0x1b7b52babc76cd75!2s34-35%20Hatton%20Garden%2C%20London%20EC1N%208DX%2C%20UK!5e0!3m2!1sen!2sus!4v1652356789012!5m2!1sen!2sus"
+    },
+    "email": "info@example.com",
+    "mobile": "+(08) 365 301 710",
+    "open_date": "Sun - Mon",
+    "open_time": "8:30 am - 7:30 pm",
+    "copyright": {
+      "enable": true,
+      "label": "© Alrights reserved by",
+      "company": "Fledger",
+      "link": "https://fledger.com/"
+    }
+  },
+
+  "social": [
+    {
+      "name": "Fb",
+      "link": "https://www.facebook.com/",
+      "value": "750,000"
+    },
+    {
+      "name": "Tw",
+      "link": "https://twitter.com/",
+      "value": "750,000"
+    },
+    {
+      "name": "In",
+      "link": "https://www.instagram.com/",
+      "value": "750,000"
+    },
+    {
+      "name": "Db",
+      "link": "https://dribbble.com/",
+      "value": "750,000"
+    },
+    {
+      "name": "Li",
+      "link": "https://www.behance.net/",
+      "value": "750,000"
+    }
+  ]
+}
