@@ -149,7 +149,7 @@ const CustomerServiceHero = ({ hero }: Props) => {
           <div className="flex-[auto] lg:flex-[0_1_575px]">
             <div className="has_fade_anim">
               <span className="text-[#58a195] font-medium mb-2 inline-block">INTRODUCING FLEDGER</span>
-              <h1 className="text-[40px] md:text-[50px] xl:text-[60px] 2xl:text-[70px] font-bold !leading-[1.1] text-[#333]">
+              <h2 className="text-[40px] md:text-[50px] xl:text-[60px] 2xl:text-[70px] font-bold !leading-[1.1] text-[#333]">
               One simple solution <br />
               for all your online <br />
                 <span className="text-[#58a195] relative">
@@ -172,7 +172,7 @@ const CustomerServiceHero = ({ hero }: Props) => {
                     ))}
                   </div>
                 </span>
-              </h1>
+              </h2>
             </div>
 
             <p className="mt-[34px] text-[18px] leading-[1.6] has_fade_anim" data-delay="0.30">Manage expenses, create professional invoices, track your expenses, and much more – all in one convenient location. Take control of your finances with Fledger
