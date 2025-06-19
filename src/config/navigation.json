@@ -2,7 +2,7 @@
   "header": [
     {
       "name": "Home",
-      "path": "/home",
+      "path": "/",
       "hasChildren": false
       
     },
