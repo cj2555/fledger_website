@@ -34,15 +34,20 @@ const Footer2 = ({ largeContainer = false, className }: Props) => {
                 <p className="text-sm">London, EC1N 8DX</p>
               </div>
             )}
-            <div className="mt-4 flex items-center">
-              <Image 
-                src={isZA ? "/assets/imgs/icon/zaflag.svg" : "/assets/imgs/icon/ukflag.svg"} 
-                alt={isZA ? "South African Flag" : "UK Flag"} 
-                width={20} 
-                height={20} 
-                className="mr-2" 
-              />
-              <span className="text-sm">English ({isZA ? "ZA" : "UK"})</span>
+            <div className="mt-4 flex flex-col">
+              <div className="flex items-center">
+                <Image 
+                  src={isZA ? "/assets/imgs/icon/zaflag.svg" : "/assets/imgs/icon/ukflag.svg"} 
+                  alt={isZA ? "South African Flag" : "UK Flag"} 
+                  width={20} 
+                  height={20} 
+                  className="mr-2" 
+                />
+                <span className="text-sm">English ({isZA ? "ZA" : "UK"})</span>
+              </div>
+              {isZA && (
+                <p className="text-sm mt-2">info@fledger.co.za</p>
+              )}
             </div>
           </div>
           
@@ -244,15 +249,20 @@ const Footer2 = ({ largeContainer = false, className }: Props) => {
                 <p className="text-sm">London, United Kingdom, EC1N 8DX</p>
               </div>
             )}
-            <div className="mt-4 flex items-center justify-end">
-              <Image 
-                src={isZA ? "/assets/imgs/icon/zaflag.svg" : "/assets/imgs/icon/ukflag.svg"} 
-                alt={isZA ? "South African Flag" : "UK Flag"} 
-                width={20} 
-                height={20} 
-                className="mr-2" 
-              />
-              <span>English ({isZA ? "ZA" : "UK"})</span>
+            <div className="mt-4 flex flex-col items-end">
+              <div className="flex items-center justify-end">
+                <Image 
+                  src={isZA ? "/assets/imgs/icon/zaflag.svg" : "/assets/imgs/icon/ukflag.svg"} 
+                  alt={isZA ? "South African Flag" : "UK Flag"} 
+                  width={20} 
+                  height={20} 
+                  className="mr-2" 
+                />
+                <span>English ({isZA ? "ZA" : "UK"})</span>
+              </div>
+              {isZA && (
+                <p className="text-sm mt-2">info@fledger.co.za</p>
+              )}
             </div>
           </div>
         </div>
