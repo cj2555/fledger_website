@@ -9,7 +9,6 @@ import ScrollSmootherComponent from "@/components/tools/scroll-smoother";
 import ToolsComponent from "@/components/tools";
 import ScrollTop from "@/components/tools/scroll-top";
 import Notification1 from "@/components/elements/notification/notification1";
-import Footer2 from "@/components/elements/footer/footer2";
 
 const Layout = ({
   children,
@@ -34,9 +33,6 @@ const Layout = ({
           <div className="max-w-[1920px] overflow-hidden mx-auto">
             {children}
           </div>
-          {/* <Footer1 footerNav={navigation.footer1} /> */}
-          <Footer2 />
-
         </div>
       </div>
     </div>
