@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Logo from "../common/logo";
+import { useLocation } from "@/context/location.context";
 
 type Props = {
   className?: string;
@@ -9,6 +12,10 @@ type Props = {
 };
 
 const Footer2 = ({ largeContainer = false, className }: Props) => {
+  const { country } = useLocation();
+
+  const isZA = country === "ZA";
+
   return (
     <footer className={cn(className)}>
       <div className={cn("container", largeContainer && "2xl:max-w-[1630px]")}>
@@ -21,13 +28,21 @@ const Footer2 = ({ largeContainer = false, className }: Props) => {
                 customHeight={50}
               />
             </div>
-            <div className="text-left text-gray-600">
-              <p className="text-sm">Hatton Garden, Holborn</p>
-              <p className="text-sm">London, EC1N 8DX</p>
-            </div>
+            {!isZA && (
+              <div className="text-left text-gray-600">
+                <p className="text-sm">Hatton Garden, Holborn</p>
+                <p className="text-sm">London, EC1N 8DX</p>
+              </div>
+            )}
             <div className="mt-4 flex items-center">
-              <Image src="/assets/imgs/icon/ukflag.svg" alt="UK Flag" width={20} height={20} className="mr-2" />
-              <span className="text-sm">English (UK)</span>
+              <Image 
+                src={isZA ? "/assets/imgs/icon/zaflag.svg" : "/assets/imgs/icon/ukflag.svg"} 
+                alt={isZA ? "South African Flag" : "UK Flag"} 
+                width={20} 
+                height={20} 
+                className="mr-2" 
+              />
+              <span className="text-sm">English ({isZA ? "ZA" : "UK"})</span>
             </div>
           </div>
           
@@ -223,19 +238,36 @@ const Footer2 = ({ largeContainer = false, className }: Props) => {
                 customHeight={50}
               />
             </div>
-            <div className="mt-4 text-right">
-              <p className="text-sm">34-35 Hatton Garden, Holborn</p>
-              <p className="text-sm">London, United Kingdom, EC1N 8DX</p>
-            </div>
-            <div className="mt-4 flex items-center">
-              <Image src="/assets/imgs/icon/ukflag.svg" alt="UK Flag" width={20} height={20} className="mr-2" />
-              <span>English (UK)</span>
+            {!isZA && (
+              <div className="mt-4 text-right">
+                <p className="text-sm">34-35 Hatton Garden, Holborn</p>
+                <p className="text-sm">London, United Kingdom, EC1N 8DX</p>
+              </div>
+            )}
+            <div className="mt-4 flex items-center justify-end">
+              <Image 
+                src={isZA ? "/assets/imgs/icon/zaflag.svg" : "/assets/imgs/icon/ukflag.svg"} 
+                alt={isZA ? "South African Flag" : "UK Flag"} 
+                width={20} 
+                height={20} 
+                className="mr-2" 
+              />
+              <span>English ({isZA ? "ZA" : "UK"})</span>
             </div>
           </div>
         </div>
         
         <div className="flex justify-center items-center py-[25px] sm:py-[38px] border-t border-[#07203214]">
-          <p className="text-[12px] sm:text-[14px] lg:text-[16px] text-center px-4">Fledger Ltd is registered in England and Wales (No. 15074267). All rights reserved. </p>
+          {!isZA && (
+            <p className="text-[12px] sm:text-[14px] lg:text-[16px] text-center px-4">
+              Fledger Ltd is registered in England and Wales (No. 15074267). All rights reserved.
+            </p>
+          )}
+          {isZA && (
+            <p className="text-[12px] sm:text-[14px] lg:text-[16px] text-center px-4">
+              All rights reserved.
+            </p>
+          )}
         </div>
       </div>
     </footer>

@@ -20,7 +20,7 @@ type Props = {
       details: string;
       items: {
         name: string;
-        details: string;
+        details: string | JSX.Element;
         icon: string;
       }[];
     };
@@ -48,7 +48,7 @@ const StartupFeature2 = ({ feature }: Props) => {
           titleClassName="max-w-[695px]"
           detailsClassName="max-w-[695px]"
         />
-        {items && items.length && (
+        {items && items.length > 0 && (
           <div className="mt-[20px] md:mt-[40px] lg:mt-[70px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[30px] mx-[20px] xl:mx-[70px] justify-center">
             {items.map((item, i) => (
               <div
@@ -68,7 +68,13 @@ const StartupFeature2 = ({ feature }: Props) => {
                     </div>
                   )}
                   <h3 className="mb-[19px] text-[24px]">{item.name}</h3>
-                  <p className="group-hover:text-primary">{item.details}</p>
+                  <div className="group-hover:text-primary">
+                    {typeof item.details === 'string' ? (
+                      <p>{item.details}</p>
+                    ) : (
+                      item.details
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

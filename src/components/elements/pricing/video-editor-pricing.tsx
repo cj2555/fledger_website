@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 
 // gsap
 import { useGSAP } from "@gsap/react";
@@ -8,26 +9,19 @@ import hasFadeAnim from "@/lib/animation/hasFadeAnim";
 
 // lib
 import { cn } from "@/lib/utils";
+import { delayTime2 } from "@/lib/helper/delayTime";
 
 // types
-import { ActionBtnType } from "@/types";
+import { PricingCardType } from "@/types";
 
 // shadcn components
-import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 // components
 import TitleSection2 from "@/components/shared/title-section/title-section2";
 import PricingCard8 from "./card/pricing-card8";
-
-type PricingCardType = {
-  name: string;
-  price: string;
-  price_label: string;
-  details: string;
-  bg_color: string;
-  action_btn: ActionBtnType;
-};
+import { useLocation } from "@/context/location.context";
 
 type Props = {
   pricing: {
@@ -42,11 +36,9 @@ type Props = {
 };
 
 const VideoEditorPricing = ({ pricing, className }: Props) => {
-  const { title, details, monthly, yearly } = pricing.data;
-
-  const [toggleYear, setToggleYear] = useState<boolean>(false);
-  const [priceContent, setPriceContent] = useState<PricingCardType[]>([]);
+  const { title, details } = pricing.data;
   const containerRef = useRef<HTMLDivElement>(null!);
+  const { country } = useLocation();
 
   useGSAP(
     () => {
@@ -55,85 +47,79 @@ const VideoEditorPricing = ({ pricing, className }: Props) => {
     { scope: containerRef }
   );
 
-  useEffect(() => {
-    toggleYear ? setPriceContent(yearly) : setPriceContent(monthly);
-  }, [toggleYear, monthly, yearly]);
+  const getPricingData = () => {
+    const aiPlan = {
+      name: "AI Accounting Agent",
+      price: "Coming soon",
+      price_label: "-",
+      details: "Experience the future of accounting with our AI-powered solution. Automate tasks, gain insights, and make data-driven decisions.",
+      action_btn: { label: "Get Started", link: "/contact", enable: true }
+    };
+
+    if (country === "ZA") {
+      return [
+        {
+          name: "Sole Trader",
+          price: "R200",
+          price_label: "per month",
+          details: "Streamline your accounting with our intuitive software designed for sole traders. Manage your finances efficiently and make informed decisions.",
+          action_btn: { label: "Get Started", link: "/contact", enable: true }
+        },
+        {
+          name: "Small business",
+          price: "R420",
+          price_label: "per month",
+          details: "Take your small business to the next level with our comprehensive accounting solution. Simplify your financial management and focus on growth.",
+          action_btn: { label: "Get Started", link: "/contact", enable: true }
+        },
+        aiPlan
+      ];
+    }
+    return [
+      {
+        name: "Sole Trader",
+        price: "£9.99",
+        price_label: "per month",
+        details: "Streamline your accounting with our intuitive software designed for sole traders. Manage your finances efficiently and make informed decisions.",
+        action_btn: { label: "Get Started", link: "/contact", enable: true }
+      },
+      {
+        name: "Small business",
+        price: "£29.99",
+        price_label: "per month",
+        details: "Take your small business to the next level with our comprehensive accounting solution. Simplify your financial management and focus on growth.",
+        action_btn: { label: "Get Started", link: "/contact", enable: true }
+      },
+      aiPlan
+    ];
+  };
 
   return (
     <section className={cn("sec_space_top4", className)}>
-      <div className=" bg-[#F7FAF9] py-[60px]" ref={containerRef}>
+      <div className="bg-[#F7FAF9] py-[60px]" ref={containerRef}>
         <TitleSection2
           title={title}
           details={details}
           titleClassName="max-w-[630px]"
           detailsClassName="max-w-[630px]"
         />
-        <div className="mt-[33px] xl:mt-[53px] 2xl:mt-[63px]">
-          <div className="flex justify-center has_fade_anim">
-            <div className="relative">
-              <div className="flex items-center space-x-5" dir="ltr">
-                <Label
-                  htmlFor="pricing-mode"
-                  className={cn(
-                    "text-[18px] font-medium",
-                    toggleYear ? "text-[#B5BCC2]" : "text-primary"
-                  )}
-                >
-                  Monthly
-                </Label>
-                <Switch
-                  id="pricing-mode"
-                  checked={toggleYear}
-                  onCheckedChange={(value) => setToggleYear(value)}
-                  className="border border-border"
+        <div className="flex justify-center mt-[30px] lg:mt-[50px]">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-[30px] relative z-[2] has_fade_anim"
+            data-delay="0.25"
+          >
+            {getPricingData().map((item, i) => (
+              <div key={`price_table-${i}`}>
+                <PricingCard8 
+                  price={item} 
+                  bgImage={
+                    i === 0 ? "/assets/bg/pricingBGFirst.svg" : 
+                    i === 1 ? "/assets/bg/pricingBGMiddle.svg" : 
+                    "/assets/bg/pricingBgLast.svg"
+                  }
                 />
-                <Label
-                  htmlFor="pricing-mode"
-                  className={cn(
-                    "text-[18px] font-medium",
-                    toggleYear ? "text-primary" : "text-[#B5BCC2]"
-                  )}
-                >
-                  Yearly
-                </Label>
               </div>
-            </div>
-          </div>
-          <div className="flex justify-center mt-[30px] lg:mt-[50px]">
-            <div
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-[30px] relative z-[2] has_fade_anim"
-              data-delay="0.25"
-            >
-              {/* {priceContent &&
-                priceContent.length > 0 &&
-                priceContent.map((item, i) => (
-                  <div key={`price_table-${i}`}>
-                    <PricingCard8 price={item} />
-                  </div>
-                ))} */}
-                    <PricingCard8 price={{
-                        name: "Sole traders",
-                        price: "£9.99",
-                        price_label: "per month",
-                        details: "Streamline your accounting with our intuitive software designed for sole traders. Manage your finances efficiently and make informed decisions.",
-                        action_btn: { label: "Get Started", link: "/contact", enable: true }
-                    }} bgImage="/assets/bg/pricingBGFirst.svg" />
-                    <PricingCard8 price={{
-                        name: "Small business",
-                        price: "£29.99",
-                        price_label: "per month",
-                        details: "Take your small business to the next level with our comprehensive accounting solution. Simplify your financial management and focus on growth.",
-                        action_btn: { label: "Get Started", link: "/contact", enable: true }
-                    }} bgImage="/assets/bg/pricingBGMiddle.svg" />
-                    <PricingCard8 price={{
-                        name: "AI Accounting Agent",
-                        price: "Coming soon",
-                        price_label: "-",
-                        details: "Experience the future of accounting with our AI-powered solution. Automate tasks, gain insights, and make data-driven decisions.",
-                        action_btn: { label: "Get Started", link: "/contact", enable: true }
-                    }} bgImage="/assets/bg/pricingBgLast.svg" />
-
-            </div>
+            ))}
           </div>
         </div>
       </div>

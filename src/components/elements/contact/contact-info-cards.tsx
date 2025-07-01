@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLocation } from "@/context/location.context";
 
 // gsap
 import { useGSAP } from "@gsap/react";
@@ -19,43 +20,53 @@ type ContactInfoItem = {
   bgColor: string;
 };
 
-const contactInfoData: ContactInfoItem[] = [
-  {
-    title: "Phone",
-    icon: "/assets/imgs/icon/phone-icon.svg",
-    content: "020-3432-6423",
-    link: "tel:02034326423",
-    bgColor: "bg-[#F8FAF8]"
-  },
-  {
-    title: "Whatsapp",
-    icon: "/assets/imgs/icon/whatsapp-icon.svg",
-    content: "020-3432-6423",
-    link: "https://wa.me/442034326423",
-    bgColor: "bg-[#F8F6FF]"
-  },
-  {
-    title: "Email",
-    icon: "/assets/imgs/icon/email-icon.svg",
-    content: "info@fledger.co.uk",
-    link: "mailto:info@fledger.co.uk",
-    bgColor: "bg-[#F6FAFF]"
-  },
-  {
-    title: "Our Office",
-    icon: "/assets/imgs/icon/location-icon.svg",
-    content: "34-35 Hatton Garden, Holborn, London, United Kingdom, EC1N 8DX",
-    link: "https://maps.google.com/?q=Hatton+Garden,+Holborn,+London,+EC1N+8DX",
-    bgColor: "bg-[#FFFCF6]"
-  }
-];
-
 type Props = {
   className?: string;
 };
 
 const ContactInfoCards = ({ className }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null!);
+  const { country } = useLocation();
+
+  const getEmailDomain = () => {
+    switch (country) {
+      case "ZA":
+        return "info@fledger.co.za";
+      default:
+        return "info@fledger.co.uk";
+    }
+  };
+
+  const contactInfoData: ContactInfoItem[] = [
+    {
+      title: "Phone",
+      icon: "/assets/imgs/icon/phone-icon.svg",
+      content: "020-3432-6423",
+      link: "tel:02034326423",
+      bgColor: "bg-[#F8FAF8]"
+    },
+    {
+      title: "Whatsapp",
+      icon: "/assets/imgs/icon/whatsapp-icon.svg",
+      content: "020-3432-6423",
+      link: "https://wa.me/442034326423",
+      bgColor: "bg-[#F8F6FF]"
+    },
+    {
+      title: "Email",
+      icon: "/assets/imgs/icon/email-icon.svg",
+      content: getEmailDomain(),
+      link: `mailto:${getEmailDomain()}`,
+      bgColor: "bg-[#F6FAFF]"
+    },
+    {
+      title: "Our Office",
+      icon: "/assets/imgs/icon/location-icon.svg",
+      content: "34-35 Hatton Garden, Holborn, London, United Kingdom, EC1N 8DX",
+      link: "https://maps.google.com/?q=Hatton+Garden,+Holborn,+London,+EC1N+8DX",
+      bgColor: "bg-[#FFFCF6]"
+    }
+  ];
 
   useGSAP(
     () => {

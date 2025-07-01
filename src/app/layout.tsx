@@ -1,5 +1,6 @@
 import { AppContextProvider } from "@/context/app.context";
 import { CookieContextProvider } from "@/context/cookie.context";
+import { LocationContextProvider } from "@/context/location.context";
 import CookieConsent from "@/components/ui/CookieConsent";
 import { Metadata, Viewport } from 'next';
 import navigation from "@/config/navigation.json";
@@ -54,26 +55,28 @@ export default function RootLayout({
       <body suppressHydrationWarning={true} dir="ltr">
         <CookieContextProvider>
           <AppContextProvider>
-            <div className="has-smooth" id="has_smooth"></div>
-            <div className="pt-serif-regular root-layout" theme-setting="style-5">
-              <ScrollSmootherComponent />
-              <ScrollTop />
-              <Header5
-                headerNav={navigation.header}
-                signUpBtnClassName="bg-btn-bg-hover hover:bg-btn-bg-main"
-              >
-                <Notification1 notification={notification} />
-              </Header5>
-              <div id="smooth-wrapper">
-                <div id="smooth-content">
-                  <div className="max-w-[1920px] overflow-hidden mx-auto">
-                    {children}
+            <LocationContextProvider>
+              <div className="has-smooth" id="has_smooth"></div>
+              <div className="pt-serif-regular root-layout" theme-setting="style-5">
+                <ScrollSmootherComponent />
+                <ScrollTop />
+                <Header5
+                  headerNav={navigation.header}
+                  signUpBtnClassName="bg-btn-bg-hover hover:bg-btn-bg-main"
+                >
+                  <Notification1 notification={notification} />
+                </Header5>
+                <div id="smooth-wrapper">
+                  <div id="smooth-content">
+                    <div className="max-w-[1920px] overflow-hidden mx-auto">
+                      {children}
+                    </div>
+                    <Footer2 />
                   </div>
-                  <Footer2 />
                 </div>
               </div>
-            </div>
-            <CookieConsent />
+              <CookieConsent />
+            </LocationContextProvider>
           </AppContextProvider>
         </CookieContextProvider>
       </body>
