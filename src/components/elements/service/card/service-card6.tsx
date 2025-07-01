@@ -2,6 +2,7 @@ import Image from "next/image";
 
 // lib
 import { markdownify } from "@/lib/helper/convert";
+import { useLocation } from "@/context/location.context";
 
 type Props = {
   service: {
@@ -15,6 +16,17 @@ type Props = {
 
 const ServiceCard6 = ({ service }: Props) => {
   const { title, short_description, image } = service.data;
+  const { country } = useLocation();
+
+  const getDescription = () => {
+    if (title === "Simple Tax Filing") {
+      return country === "ZA" 
+        ? "Connect with SARS and stay tax compliant."
+        : "Connect with HMRC and stay tax compliant.";
+    }
+    return short_description;
+  };
+
   return (
     <div className="px-[50px]">
       {image && (
@@ -27,7 +39,7 @@ const ServiceCard6 = ({ service }: Props) => {
           className="text-[20px] lg:text-[24px] leading-tight"
           dangerouslySetInnerHTML={markdownify(title)}
         />
-        <p className="mt-[19px]">{short_description}</p>
+        <p className="mt-[19px]">{getDescription()}</p>
       </div>
     </div>
   );
