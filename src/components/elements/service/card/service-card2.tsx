@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLocation } from "@/context/location.context";
 
 // types
 import { ServiceDetailsType } from "@/types";
@@ -13,6 +16,17 @@ type Props = {
 
 const ServiceCard2 = ({ service }: Props) => {
   const { title, short_description, image } = service.data;
+  const { country } = useLocation();
+
+  const getDescription = () => {
+    if (title === "Simple Tax Filing") {
+      return country === "ZA" 
+        ? "Connect with SARS and stay tax compliant."
+        : "Connect with HMRC and stay tax compliant.";
+    }
+    return short_description;
+  };
+
   return (
     <div className="px-[20px] py-[30px] lg:py-[20px] xl:px-[30px] xl:py-[40px] border border-border rounded-[40px] text-center">
       <div className="pb-[16px] md:pb-[35px] w-[60px] mx-auto">
@@ -23,7 +37,7 @@ const ServiceCard2 = ({ service }: Props) => {
           {title}
         </h3>
       </Link>
-      <p className="pb-[20px] lg:pb-[32px]">{short_description}</p>
+      <p className="pb-[20px] lg:pb-[32px]">{getDescription()}</p>
       <Link href="#" className="inline-block">
         <div className="rounded-full p-0 flex justify-center items-center w-[50px] h-[50px] md:w-[60px] md:h-[60px] bg-transparent border border-border hover:bg-theme">
           <Image

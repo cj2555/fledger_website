@@ -12,6 +12,7 @@ import { delayTime2 } from "@/lib/helper/delayTime";
 
 // components
 import TitleSection2 from "@/components/shared/title-section/title-section2";
+import { useLocation } from "@/context/location.context";
 
 type Props = {
   feature: {
@@ -29,7 +30,7 @@ type Props = {
 
 const StartupFeature2 = ({ feature }: Props) => {
   const { title, details, items } = feature.data;
-
+  const { country } = useLocation();
   const containerRef = useRef<HTMLDivElement>(null!);
 
   useGSAP(
@@ -38,6 +39,17 @@ const StartupFeature2 = ({ feature }: Props) => {
     },
     { scope: containerRef }
   );
+
+  const processDetails = (details: string | JSX.Element) => {
+    if (typeof details === 'string') {
+      // Replace HMRC with SARS for ZA users in the string
+      if (country === 'ZA') {
+        return details.replace('HMRC', 'SARS');
+      }
+      return details;
+    }
+    return details;
+  };
 
   return (
     <section className="bg-[#EDF4F3] max-w-[1290px] mx-auto rounded-theme sec_space4">
@@ -69,11 +81,7 @@ const StartupFeature2 = ({ feature }: Props) => {
                   )}
                   <h3 className="mb-[19px] text-[24px]">{item.name}</h3>
                   <div className="group-hover:text-primary">
-                    {typeof item.details === 'string' ? (
-                      <p>{item.details}</p>
-                    ) : (
-                      item.details
-                    )}
+                    <p>{processDetails(item.details)}</p>
                   </div>
                 </div>
               </div>
