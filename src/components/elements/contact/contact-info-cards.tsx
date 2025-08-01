@@ -68,6 +68,11 @@ const ContactInfoCards = ({ className }: Props) => {
     }
   ];
 
+  // Filter cards based on country
+  const filteredContactInfoData = country === "ZA" 
+    ? contactInfoData.filter(item => item.title === "Email")
+    : contactInfoData;
+
   useGSAP(
     () => {
       // Temporarily comment out the animation to test if it's the cause
@@ -86,7 +91,7 @@ const ContactInfoCards = ({ className }: Props) => {
       )}
       ref={containerRef}
     >
-      {contactInfoData.map((item, index) => (
+      {filteredContactInfoData.map((item, index) => (
         <div 
           key={`contact-info-${index}`}
           className={cn(
